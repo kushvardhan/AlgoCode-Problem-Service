@@ -1,20 +1,18 @@
+const { Problem } = require("../models");
+const mongoose = require("mongoose");
 const BadRequest = require("../errors/badRequest.error");
 
-class ProblemRepository{
+class ProblemRepository {
 
-    async createProblem(problemData){
-        return await problemModel.create({
+    async createProblem(problemData) {
+        return await Problem.create({
             title: problemData.title,
             description: problemData.description,
             testCases: problemData.testCases || [],
         });
     }
 
-    async getAllProblems(){
-        return await problemModel.find();
-    }
-
-    async getProblemById(problemId){
+    async getProblem(problemId) {
         if (!mongoose.Types.ObjectId.isValid(problemId)) {
             throw new BadRequest("id", {
                 reason: "Invalid MongoDB ObjectId",
@@ -22,6 +20,10 @@ class ProblemRepository{
         }
 
         return await Problem.findById(problemId);
+    }
+
+    async getProblems() {
+        return await Problem.find();
     }
 
     async updateProblem(problemId, updateData) {
@@ -54,8 +56,6 @@ class ProblemRepository{
         }
         return deletedProblem;
     }
-
-
 }
 
 module.exports = ProblemRepository;

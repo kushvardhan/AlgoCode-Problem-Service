@@ -1,4 +1,4 @@
 module.exports = {
-    errorHandler : require('./errorHandlers'),
+    errorHandler : require('./errorHandler'),
     sanitizeMarkDownContent : require("./markdownSanitizer"),
 }

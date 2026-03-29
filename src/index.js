@@ -1,8 +1,8 @@
 const express = require("express");
 const { PORT } = require("./config/server.config");
-const errorHandler = require("./utils/errorHandler");
 const NotImplementedError = require("./errors/notImplemented.error");
 const connectDB = require("./config/db.config");
+const { errorHandler } = require("./utils");
 
 const app = express();
 

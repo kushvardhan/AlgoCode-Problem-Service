@@ -10,7 +10,7 @@ function createProblem(req,res){
 
 function getProblems(req,res){
     try{
-        return res.status(StatusCodes.NOT_IMPLEMENTED).json({message:"Get Problems controller isnt working right now."});
+        return res.status(StatusCodes.NOT_IMPLEMENTED).json({message:"Get Problems SKIBIDIBIDOOO controller isnt working right now."});
     }catch(err){
         res.status(500).json({message:err.message});
     }

@@ -6,7 +6,7 @@ const BadRequest = require("../errors/badRequest.error");
 
 const problemService = new ProblemService(new ProblemRepository());
 
-async function createProblem(req,res){
+async function createProblem(req,res,next){
      try {
         if (!req.body || Object.keys(req.body).length === 0) {
             throw new BadRequest("body", {
@@ -15,6 +15,9 @@ async function createProblem(req,res){
         }
 
         const problem = await problemService.createProblem(req.body);
+        if(!problem){
+            throw new Error("Failed to create problem");
+        }
 
         return res.status(StatusCodes.CREATED).json({
             success: true,
@@ -29,7 +32,7 @@ async function createProblem(req,res){
 
 async function getProblems(req, res, next) {
     try {
-        const problems = await problemService.getAllyyProblems();
+        const problems = await problemService.getAllProblems();
 
         return res.status(StatusCodes.OK).json({
             success: true,

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { NODE_ENV, MONGO_URI } = require('./server.config');
 
 async function connectDB(){
     try{

@@ -18,8 +18,15 @@ app.get("/ping", (req, res) => {
 
 
 app.use(errorHandler);
-app.listen(PORT, async() => {
+
+app.listen(PORT, async () => {
   console.log(`Server is running on port ${PORT}`);
-  await connectDB();
-  console.log("Connected to DB.");
+  
+  try {
+    await connectDB();
+    console.log("Connected to DB.");
+  } catch (err) {
+    console.log("DB connection failed");
+    throw err;
+  }
 });
